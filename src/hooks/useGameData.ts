@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import type { PlayerData } from '../types';
+import { TRAINS } from '../data/trains';
+
+const VALID_TRAIN_IDS = new Set(TRAINS.map((t) => t.id));
 
 const STORAGE_KEY = 'sakuranbo_train_player_data';
 const PASSWORD_KEY = 'sakuranbo_train_settings_password';
@@ -21,7 +24,10 @@ export const useGameData = () => {
       try {
         const parsed = JSON.parse(saved);
         if (typeof parsed.miles === 'number' && Array.isArray(parsed.unlockedTrainIds)) {
-          setPlayerData(parsed);
+          const filteredIds = parsed.unlockedTrainIds.filter((id: unknown) =>
+            typeof id === 'string' && VALID_TRAIN_IDS.has(id)
+          );
+          setPlayerData({ miles: parsed.miles, unlockedTrainIds: filteredIds });
         }
       } catch (e) {
         console.error('Failed to parse save data', e);

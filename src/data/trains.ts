@@ -7,7 +7,7 @@ export interface Train {
 }
 
 export const TRAINS: Train[] = [
-  // Existing 50 trains
+  // Classic & Popular Trains
   { id: 'alps_express', name: 'アルプスエキスプレス', description: 'とやまちほうてつどうの かんこうれっしゃです。', imagePath: '/images/alps_express.jpg', rarity: 'Normal' },
   { id: 'asoboy', name: 'あそぼーい！', description: 'あその けしきを たのしめる かんこうれっしゃです。', imagePath: '/images/asoboy.jpg', rarity: 'Rare' },
   { id: 'azusa_e353', name: '特急あずさ (E353系)', description: 'しんじゅくから まつもとへ むかう とっきゅうです。', imagePath: '/images/azusa_e353.jpg', rarity: 'Normal' },
@@ -24,7 +24,6 @@ export const TRAINS: Train[] = [
   { id: 'hinotori', name: 'ひのとり', description: 'あかくて かっこいい きんてつの とっきゅうです。', imagePath: '/images/hinotori.jpg', rarity: 'SuperRare' },
   { id: 'hitachi', name: '特急ひたち', description: 'とうきょうから みとや せんだいへ むかう とっきゅうです。', imagePath: '/images/hitachi.jpg', rarity: 'Normal' },
   { id: 'inaho', name: '特急いなほ', description: 'にほんかいぞいを はしる とっきゅうれっしゃです。', imagePath: '/images/inaho.jpg', rarity: 'Normal' },
-  { id: 'ishizuchi', name: '特急いしづち', description: 'しこくを はしる とっきゅうれっしゃです。', imagePath: '/images/ishizuchi.jpg', rarity: 'Normal' },
   { id: 'kagayaki_e7', name: 'かがやき (E7系)', description: 'あおと きんいろの ラインが かっこいい ほくりくしんかんせんです。', imagePath: '/images/kagayaki_e7.jpg', rarity: 'SuperRare' },
   { id: 'kamome', name: '西九州新幹線かもめ', description: 'しろくて ピカピカの あたらしい しんかんせんです。', imagePath: '/images/kamome.jpg', rarity: 'SuperRare' },
   { id: 'kamui', name: '特急カムイ', description: 'ほっかいどうの さっぽろと あさひかわを むすぶ とっきゅうです。', imagePath: '/images/kamui.jpg', rarity: 'Normal' },
@@ -59,17 +58,15 @@ export const TRAINS: Train[] = [
   { id: 'yufuin_nomori', name: 'ゆふいんの森', description: 'みどりいろで クラシックな デザインの かんこうれっしゃです。', imagePath: '/images/yufuin_nomori.jpg', rarity: 'Rare' },
   { id: 'yui_rail', name: 'ゆいレール', description: 'おきなわを はしる モノレールです。', imagePath: '/images/yui_rail.jpg', rarity: 'Normal' },
 
-  // New 30 proposed trains
+  // Commuter, Express & Cruise Trains
   { id: 'e233_chuo', name: 'E233系 中央線', description: 'オレンジいろの ラインが めじるしの つうきんでんしゃです。', imagePath: '/images/e233_chuo.jpg', rarity: 'Normal' },
   { id: 'e235_yokosuka', name: 'E235系 横須賀・総武快速線', description: 'あおと クリームいろの さいしんの つうきんでんしゃです。', imagePath: '/images/e235_yokosuka.jpg', rarity: 'Normal' },
   { id: 'keikyu_2100', name: '京急2100形', description: 'ドレミファインバータの おとで ゆうめいだった あかい でんしゃです。', imagePath: '/images/keikyu_2100.jpg', rarity: 'Normal' },
   { id: 'skyliner', name: '京成スカイライナー', description: 'なりたくうこうまで とても はやく はしる とっきゅうです。', imagePath: '/images/skyliner.jpg', rarity: 'Rare' },
   { id: 'spacia_x', name: '東武スペーシアX', description: 'しろくて かっこいい あたらしい とっきゅうです。', imagePath: '/images/spacia_x.jpg', rarity: 'SuperRare' },
   { id: 'romancecar_gse', name: 'ロマンスカーGSE', description: 'まっかで おおきな まどが ある とっきゅうです。', imagePath: '/images/romancecar_gse.jpg', rarity: 'SuperRare' },
-  { id: 'romancecar_vse', name: 'ロマンスカーVSE', description: 'しろくて きれいな とっきゅうです。', imagePath: '/images/romancecar_vse.jpg', rarity: 'SuperRare' },
   { id: 'urban_liner', name: '近鉄アーバンライナー', description: 'おおさかと なごやを むすぶ とっきゅうです。', imagePath: '/images/urban_liner.jpg', rarity: 'Rare' },
   { id: 'aoniyoshi', name: '近鉄あをによし', description: 'むらさきいろの きれいな かんこうとっきゅうです。', imagePath: '/images/aoniyoshi.jpg', rarity: 'SuperRare' },
-  { id: 'keihan_premium', name: '京阪プレミアムカー', description: 'ゆったり すわれる ごうかな しゃりょうです。', imagePath: '/images/keihan_premium.jpg', rarity: 'Rare' },
   { id: 'hanshin_jetcar', name: '阪神ジェットカー', description: 'スタートダッシュが とても はやい でんしゃです。', imagePath: '/images/hanshin_jetcar.jpg', rarity: 'Normal' },
   { id: 'nankai_southern', name: '南海サザン', description: 'わかやまへ むかう とっきゅうです。', imagePath: '/images/nankai_southern.jpg', rarity: 'Normal' },
   { id: 'hokuto', name: '特急北斗', description: 'さっぽろと はこだてを むすぶ とっきゅうです。', imagePath: '/images/hokuto.jpg', rarity: 'Normal' },
@@ -91,26 +88,21 @@ export const TRAINS: Train[] = [
   { id: 'sunrise_seto_izumo', name: 'サンライズ瀬戸・出雲', description: 'よる ねている あいだに とおくへ いく しんだいとっきゅうです。', imagePath: '/images/sunrise_seto_izumo.jpg', rarity: 'SuperRare' },
   { id: 'saphir_odoriko', name: 'サフィール踊り子', description: 'ほうせきみたいに きれいな あおいろの とっきゅうです。', imagePath: '/images/saphir_odoriko.jpg', rarity: 'SuperRare' },
 
-  // Brand new 30 trains
+  // Historic Shinkansen & Regional Express
   { id: 'e8_tsubasa', name: 'E8系 つばさ', description: 'あたらしい むらさきいろの ヤマガタしんかんせんです。', imagePath: '/images/e8_tsubasa.jpg', rarity: 'SuperRare' },
   { id: 'e4_max', name: 'E4系 Max', description: '2かいだての とても おおきな しんかんせんです。', imagePath: '/images/e4_max.jpg', rarity: 'Rare' },
   { id: 'shinkansen_700', name: '700系 レールスター', description: 'カモノハシのような かおの しんかんせんです。', imagePath: '/images/shinkansen_700.jpg', rarity: 'Rare' },
   { id: 'shinkansen_300', name: '300系 新幹線', description: 'むかし かつやくした のぞみごう です。', imagePath: '/images/shinkansen_300.jpg', rarity: 'Rare' },
   { id: 'shinkansen_100', name: '100系 新幹線', description: 'さきが とがった むかしの しんかんせんです。', imagePath: '/images/shinkansen_100.jpg', rarity: 'Rare' },
   { id: 'shinkansen_200', name: '200系 新幹線', description: 'ゆきに つよい みどりいろの むかしの しんかんせんです。', imagePath: '/images/shinkansen_200.jpg', rarity: 'SuperRare' },
-  { id: 'e231_500', name: 'E231系 山手線', description: 'すこし まえまで はしっていた やまのてせんです。', imagePath: '/images/e231_500.jpg', rarity: 'Normal' },
   { id: '209_keihin', name: '209系 京浜東北線', description: 'みずいろの ラインが はいった むかしの つうきんでんしゃです。', imagePath: '/images/209_keihin.jpg', rarity: 'Normal' },
-  { id: '201_chuo', name: '201系 中央線', description: 'オレンジいろの ぜんたいが めだつ むかしの でんしゃです。', imagePath: '/images/201_chuo.jpg', rarity: 'Rare' },
-  { id: 'e217_yokosuka', name: 'E217系 横須賀線', description: 'あおと クリームいろの むかしの つうきんでんしゃです。', imagePath: '/images/e217_yokosuka.jpg', rarity: 'Normal' },
   { id: '255_boso', name: '255系 房総ビュー', description: 'ちばの うみぞいを はしる とっきゅうです。', imagePath: '/images/255_boso.jpg', rarity: 'Normal' },
-  { id: '223_special_rapid', name: '223系 新快速', description: 'かんさいで とても はやく はしる でんしゃです。', imagePath: '/images/223_special_rapid.jpg', rarity: 'Normal' },
-  { id: '225_special_rapid', name: '225系 新快速', description: 'あたらしい かたちを した はやい でんしゃです。', imagePath: '/images/225_special_rapid.jpg', rarity: 'Normal' },
+  { id: '225_special_rapid', name: '225系 新快速', description: 'かんさいで とても はやく はしる かっこいい でんしゃです。', imagePath: '/images/225_special_rapid.jpg', rarity: 'Normal' },
   { id: '227_redwing', name: '227系 レッドウィング', description: 'ひろしまを はしる あかい はねの でんしゃです。', imagePath: '/images/227_redwing.jpg', rarity: 'Normal' },
   { id: '323_osaka_loop', name: '323系 大阪環状線', description: 'おおさかの まちを ぐるぐる まわる あたらしい でんしゃです。', imagePath: '/images/323_osaka_loop.jpg', rarity: 'Normal' },
   { id: '281_haruka', name: '特急はるか 281系', description: 'くうこうへ むかう しろい とっきゅうです。', imagePath: '/images/281_haruka.jpg', rarity: 'Rare' },
   { id: '283_ocean_arrow', name: 'オーシャンアロー 283系', description: 'イルカのような かおを した とっきゅうです。', imagePath: '/images/283_ocean_arrow.jpg', rarity: 'Rare' },
   { id: '287_kounotori', name: '特急こうのとり 287系', description: 'あかい ラインが はいった とっきゅうです。', imagePath: '/images/287_kounotori.jpg', rarity: 'Normal' },
-  { id: '787_relay', name: '787系', description: 'まっくろで かっこいい きゅうしゅうの とっきゅうです。', imagePath: '/images/787_relay.jpg', rarity: 'Rare' },
   { id: '885_kamome', name: '885系 白いかもめ', description: 'まるい かおの しろい とっきゅうです。', imagePath: '/images/885_kamome.jpg', rarity: 'SuperRare' },
   { id: '783_hyper', name: '783系 ハイパーサルーン', description: 'まんなかに ドアが ある めずらしい とっきゅうです。', imagePath: '/images/783_hyper.jpg', rarity: 'Normal' },
   { id: 'tokyu_5050', name: '東急5050系', description: 'ピンクいろの ラインが はいった しぶやの でんしゃです。', imagePath: '/images/tokyu_5050.jpg', rarity: 'Normal' },
@@ -119,7 +111,17 @@ export const TRAINS: Train[] = [
   { id: 'tobu_500', name: '東武リバティ 500系', description: 'ロボットのような かおの とうぶせんの とっきゅうです。', imagePath: '/images/tobu_500.jpg', rarity: 'Rare' },
   { id: 'keikyu_1000_yellow', name: '京急イエローハッピー', description: 'きいろくて めずらしい けいきゅうの でんしゃです。', imagePath: '/images/keikyu_1000_yellow.jpg', rarity: 'SuperRare' },
   { id: 'keihan_8000', name: '京阪8000系', description: 'あかと きいろの 2かいだても ある とっきゅうです。', imagePath: '/images/keihan_8000.jpg', rarity: 'Rare' },
-  { id: 'hankyu_1000', name: '阪急1000系', description: 'あずきいろが きれいな はんきゅうでんしゃです。', imagePath: '/images/hankyu_1000.jpg', rarity: 'Normal' },
-  { id: 'meitetsu_2200', name: '名鉄2200系', description: 'あかとしろの かっこいい めいてつの とっきゅうです。', imagePath: '/images/meitetsu_2200.jpg', rarity: 'Normal' },
-  { id: 'nankai_30000', name: '特急こうや 30000系', description: 'あかい かおが めだつ なんかいの とっきゅうです。', imagePath: '/images/nankai_30000.jpg', rarity: 'Rare' }
+  { id: 'nankai_30000', name: '特急こうや 30000系', description: 'あかい かおが めだつ なんかいの とっきゅうです。', imagePath: '/images/nankai_30000.jpg', rarity: 'Rare' },
+
+  // 10 Future Shinkansen, Maglev, Eco & Express Trains
+  { id: 'alfa_x', name: 'E956形 ALFA-X（アルファエックス）', description: 'じそく360キロを めざす しけんしんかんせん！1ごうしゃと 10ごうしゃで はなの ながさが ちがうよ。', imagePath: '/images/alfa_x.jpg', rarity: 'SuperRare' },
+  { id: 'shinkansen_e10', name: 'E10系（じき東北新幹線）', description: 'はやぶさの つぎを つぐ みらいの しんかんせん！2しょくの みどりと さくらの ラインが とくちょうだよ。', imagePath: '/images/shinkansen_e10.jpg', rarity: 'SuperRare' },
+  { id: 'shinkansen_s0', name: 'S0系（じき東海道新幹線）', description: 'N700Sの つぎに とうじょうする みらいの しんかんせん！じどううんてんの ぎじゅつも はいるよ。', imagePath: '/images/shinkansen_s0.jpg', rarity: 'SuperRare' },
+  { id: 'shinkansen_soar', name: 'E927形 SOAR（ソアー）', description: 'あたらしい しんかんせんの おいしゃさん！48だいの カメラと センサーで はしりながら せんろを しらべるよ。', imagePath: '/images/shinkansen_soar.jpg', rarity: 'SuperRare' },
+  { id: 'linear_l0_m10', name: '超電導リニア L0系「M10」', description: 'じしゃくの ちからで ういて じそく500キロで はしる リニアの さいしん しけんしゃりょうだよ！', imagePath: '/images/linear_l0_m10.jpg', rarity: 'SuperRare' },
+  { id: 'hybari_fve991', name: 'FV-E991系 HYBARI（ひばり）', description: 'やねの すいそと くうきの さんそで でんきを つくって はしる エコでんしゃ！でるのは みずだけだよ。', imagePath: '/images/hybari_fve991.jpg', rarity: 'Rare' },
+  { id: 'romancecar_80000', name: '新型ロマンスカー 80000形', description: 'みずいろに きらめく みらいの ロマンスカー！てんぼうせきや しずくみたいな おおきな まるい まどが あるよ。', imagePath: '/images/romancecar_80000.jpg', rarity: 'SuperRare' },
+  { id: 'luna_azul', name: '新型夜行特急「ルナ・アズール」', description: '2しょくの あおいろが きれいな あたらしい やこうとっきゅう！ぜんぶ こしつで ひみつきちみたいに わくわくするよ。', imagePath: '/images/luna_azul.jpg', rarity: 'SuperRare' },
+  { id: 'seibu_tokiiro', name: '新型ライナー「トキイロ」', description: 'あさやけから ゆうやけの そらを ドットもようで えがいた 8りょう ぜんぶ いろが ちがう でんしゃだよ！', imagePath: '/images/seibu_tokiiro.jpg', rarity: 'Rare' },
+  { id: 'tobu_next_express', name: '東武 次世代新型特急', description: 'スペーシアや りょうもうの つぎを つぐ あたらしい とっきゅう！どんな すがたに なるか たのしみだね。', imagePath: '/images/tobu_next_express.jpg', rarity: 'Rare' }
 ];

@@ -98,14 +98,36 @@ def collect_phrases() -> list[str]:
     return sorted(phrases)
 
 
+def make_pronounceable(text: str) -> str:
+    replacements = [
+        ("E956形 ALFA-X（アルファエックス）", "イーきゅうごーろくがた アルファエックス"),
+        ("E10系（じき東北新幹線）", "イーじゅっけい、じき とうほくしんかんせん"),
+        ("S0系（じき東海道新幹線）", "エスゼロけい、じき とうかいどうしんかんせん"),
+        ("E927形 SOAR（ソアー）", "イーきゅうにーなながた ソアー"),
+        ("超電導リニア L0系「M10」", "ちょうでんどうリニア エルゼロけい エムじゅう"),
+        ("FV-E991系 HYBARI（ひばり）", "エフブイ イーきゅうきゅういちけい ひばり"),
+        ("新型ロマンスカー 80000形", "しんがたロマンスカー はちまんがた"),
+        ("新型夜行特急「ルナ・アズール」", "しんがた やこうとっきゅう ルナ・アズール"),
+        ("新型ライナー「トキイロ」", "しんがたライナー トキイロ"),
+        ("東武 次世代新型特急", "とうぶ じせだい しんがたとっきゅう"),
+        ("N700S", "エヌななひゃくエス"),
+        ("Laview（ラビュー）", "ラビュー"),
+    ]
+    out = text
+    for src, dst in replacements:
+        out = out.replace(src, dst)
+    return out
+
+
 async def synth_one(sem: asyncio.Semaphore, text: str, out_path: str):
     if os.path.exists(out_path) and os.path.getsize(out_path) > 500:
         return
+    tts_text = make_pronounceable(text)
     async with sem:
         for attempt in range(4):
             try:
                 comm = edge_tts.Communicate(
-                    text, VOICE_NAME, pitch=VOICE_PITCH, rate=VOICE_RATE
+                    tts_text, VOICE_NAME, pitch=VOICE_PITCH, rate=VOICE_RATE
                 )
                 await comm.save(out_path)
                 if os.path.getsize(out_path) > 500:
