@@ -84,20 +84,24 @@ export const SakuranboDiagram: React.FC<SakuranboDiagramProps> = ({
           </div>
         </div>
 
-        {/* Helper summary pill once 10 is made */}
-        {showLeft && (
-          <div className="make-ten-pill">
-            <span className="ten-badge">
-              {a} ＋ {cherryLeft} ＝ <strong>10</strong>
-            </span>
-            {showRight && (
-              <span className="ten-next">
-                ➡ <strong>10</strong> ＋ {cherryRight} ＝{' '}
-                <strong>{showAnswer ? answer : '？'}</strong>
+        {/* Fixed-height single-line helper summary area so card height never jumps */}
+        <div className="helper-formula-bar">
+          {showLeft ? (
+            <div className="make-ten-pill">
+              <span className="ten-badge">
+                {a} ＋ {cherryLeft} ＝ <strong>10</strong>
               </span>
-            )}
-          </div>
-        )}
+              {showRight && (
+                <span className="ten-next">
+                  ➡ <strong>10</strong> ＋ {cherryRight} ＝{' '}
+                  <strong>{showAnswer ? answer : '？'}</strong>
+                </span>
+              )}
+            </div>
+          ) : (
+            <div className="helper-placeholder">10 の まとまり を つくろう！</div>
+          )}
+        </div>
       </div>
     );
   }
@@ -163,40 +167,44 @@ export const SakuranboDiagram: React.FC<SakuranboDiagramProps> = ({
         </div>
       </div>
 
-      {/* Step 2 & 3 helper equations for subtraction */}
-      {showRight && (
-        <div className="sub-helper-area">
-          <div className={`sub-step-row ${step === 1 && !isQuestionDone ? 'highlight-row' : ''}`}>
-            <span>① 10 − {b} ＝</span>
-            <span
-              className={`mini-slot ${
-                step === 1 && !isQuestionDone
-                  ? 'slot-active'
-                  : showIntermediate
-                  ? 'slot-filled'
-                  : ''
-              } ${shakeSlot && step === 1 ? 'shake' : ''}`}
-            >
-              {showIntermediate ? intermediateResult : '?'}
-            </span>
-          </div>
-
-          {showIntermediate && (
-            <div className={`sub-step-row ${step === 2 && !isQuestionDone ? 'highlight-row' : ''}`}>
-              <span>
-                ② {intermediateResult} ＋ {cherryRight} ＝
-              </span>
+      {/* Fixed-height horizontal helper equations for subtraction so height stays constant */}
+      <div className="helper-formula-bar">
+        {showRight ? (
+          <div className="sub-helper-area">
+            <div className={`sub-step-row ${step === 1 && !isQuestionDone ? 'highlight-row' : ''}`}>
+              <span>① 10−{b}＝</span>
               <span
                 className={`mini-slot ${
-                  step === 2 && !isQuestionDone ? 'slot-active' : showAnswer ? 'slot-done' : ''
-                } ${shakeSlot && step === 2 ? 'shake' : ''}`}
+                  step === 1 && !isQuestionDone
+                    ? 'slot-active'
+                    : showIntermediate
+                    ? 'slot-filled'
+                    : ''
+                } ${shakeSlot && step === 1 ? 'shake' : ''}`}
               >
-                {showAnswer ? answer : '?'}
+                {showIntermediate ? intermediateResult : '?'}
               </span>
             </div>
-          )}
-        </div>
-      )}
+
+            {showIntermediate && (
+              <div className={`sub-step-row ${step === 2 && !isQuestionDone ? 'highlight-row' : ''}`}>
+                <span>
+                  ② {intermediateResult}＋{cherryRight}＝
+                </span>
+                <span
+                  className={`mini-slot ${
+                    step === 2 && !isQuestionDone ? 'slot-active' : showAnswer ? 'slot-done' : ''
+                  } ${shakeSlot && step === 2 ? 'shake' : ''}`}
+                >
+                  {showAnswer ? answer : '?'}
+                </span>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="helper-placeholder">10 と いくつ に わけよう！</div>
+        )}
+      </div>
     </div>
   );
 };

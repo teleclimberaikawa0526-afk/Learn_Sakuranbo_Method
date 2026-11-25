@@ -36,6 +36,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({
   const [milePopKey, setMilePopKey] = useState(0);
   const [showMilePop, setShowMilePop] = useState(false);
   const [earnedMiles, setEarnedMiles] = useState(0);
+  const [stepHadMistake, setStepHadMistake] = useState(false);
 
   const [showBlocks, setShowBlocks] = useState(true);
   const [voiceEnabled, setVoiceEnabled] = useState(() => voiceGuide.isEnabled());
@@ -109,13 +110,19 @@ export const GameScreen: React.FC<GameScreenProps> = ({
 
     if (val === currentStepGuide.correctValue) {
       setIsTransitioning(true);
-      setFeedback({ type: 'correct', text: 'せいかい！ +1 マイル！' });
 
-      // Award +1 mile for every step solved
-      onAddMiles(1);
-      setEarnedMiles((prev) => prev + 1);
-      setMilePopKey((prev) => prev + 1);
-      setShowMilePop(true);
+      // Only award +1 mile if the user did not make any mistake on this step
+      const milesForThisStep = stepHadMistake ? 0 : 1;
+      if (milesForThisStep > 0) {
+        setFeedback({ type: 'correct', text: 'せいかい！ +1 マイル！' });
+        onAddMiles(1);
+        setEarnedMiles((prev) => prev + 1);
+        setMilePopKey((prev) => prev + 1);
+        setShowMilePop(true);
+      } else {
+        setFeedback({ type: 'correct', text: 'せいかい！ よく がんばったね！' });
+        setShowMilePop(false);
+      }
 
       const isLastStep = step === 2;
       if (isLastStep) {
@@ -129,6 +136,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({
         if (!isMountedRef.current) return;
         setShowMilePop(false);
         setFeedback(null);
+        setStepHadMistake(false);
 
         if (isLastStep) {
           if (qIndex + 1 < questions.length) {
@@ -137,7 +145,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({
             setIsQuestionDone(false);
             setIsTransitioning(false);
           } else {
-            onFinishSession(earnedMiles + 1, questions.length);
+            onFinishSession(earnedMiles + milesForThisStep, questions.length);
           }
         } else {
           setStep((prev) => (prev + 1) as StepIndex);
@@ -160,6 +168,7 @@ export const GameScreen: React.FC<GameScreenProps> = ({
         timerRef.current = window.setTimeout(proceedNext, silentWaitMs);
       }
     } else {
+      setStepHadMistake(true);
       sound.playWrong();
       setFeedback({ type: 'wrong', text: 'おしい！ もういちど やってみよう' });
       setShakeSlot(true);
@@ -270,20 +279,22 @@ export const GameScreen: React.FC<GameScreenProps> = ({
 
       {/* Main workspace: Sakuranbo Diagram + Optional Blocks */}
       <div className="learning-stage">
-        <SakuranboDiagram
-          question={currentQuestion}
-          step={step}
-          isQuestionDone={isQuestionDone}
-          shakeSlot={shakeSlot}
-        />
-
-        {showBlocks && (
-          <BlockVisualizer
+        <div className="learning-stage-inner">
+          <SakuranboDiagram
             question={currentQuestion}
             step={step}
             isQuestionDone={isQuestionDone}
+            shakeSlot={shakeSlot}
           />
-        )}
+
+          {showBlocks && (
+            <BlockVisualizer
+              question={currentQuestion}
+              step={step}
+              isQuestionDone={isQuestionDone}
+            />
+          )}
+        </div>
       </div>
 
       {/* Large Kid-Friendly Number Keypad */}
