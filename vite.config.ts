@@ -2,7 +2,11 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
+const isGitHubPages = process.env.GITHUB_ACTIONS === 'true' || process.env.GITHUB_PAGES === 'true'
+const base = isGitHubPages ? '/Learn_Sakuranbo_Method/' : '/'
+
 export default defineConfig({
+  base,
   plugins: [
     react(),
     VitePWA({
@@ -15,6 +19,8 @@ export default defineConfig({
         theme_color: '#fff1f2',
         background_color: '#fff1f2',
         display: 'standalone',
+        scope: base,
+        start_url: base,
         icons: [
           {
             src: 'pwa-192x192.png',

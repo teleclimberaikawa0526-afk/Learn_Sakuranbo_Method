@@ -2,6 +2,8 @@
 
 小学1年生向けの「さくらんぼ計算（繰り上がりの足し算・繰り下がりの引き算）」をステップバイステップで楽しく学べるWebアプリ（PWA対応）です。
 
+- **公開URL (GitHub Pages)**: https://teleclimberaikawa0526-afk.github.io/Learn_Sakuranbo_Method/
+
 ## 主な機能
 
 - **ステップバイステップ学習（全3コース）**

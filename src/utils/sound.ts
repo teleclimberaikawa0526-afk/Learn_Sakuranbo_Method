@@ -1,4 +1,5 @@
 import { VOICE_MANIFEST } from '../data/voiceManifest';
+import { withBase } from './assetUrl';
 
 class SoundManager {
   private audioContext: AudioContext | null = null;
@@ -177,7 +178,7 @@ class VoiceGuideManager {
     const audioUrl = VOICE_MANIFEST[text];
     if (audioUrl && typeof Audio !== 'undefined') {
       try {
-        const audio = new Audio(audioUrl);
+        const audio = new Audio(withBase(audioUrl));
         this.currentAudio = audio;
 
         let settled = false;

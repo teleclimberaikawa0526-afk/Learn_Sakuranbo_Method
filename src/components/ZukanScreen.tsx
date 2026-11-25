@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import type { PlayerData } from '../types';
 import { TRAINS } from '../data/trains';
 import { sound, voiceGuide } from '../utils/sound';
+import { withBase } from '../utils/assetUrl';
 
 interface ZukanScreenProps {
   playerData: PlayerData;
@@ -131,7 +132,7 @@ export const ZukanScreen: React.FC<ZukanScreenProps> = ({ playerData, onBack }) 
                 >
                   {isUnlocked ? (
                     <img
-                      src={train.imagePath}
+                      src={withBase(train.imagePath)}
                       alt={train.name}
                       loading="lazy"
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }}

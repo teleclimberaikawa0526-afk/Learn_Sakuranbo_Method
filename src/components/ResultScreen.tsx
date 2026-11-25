@@ -3,6 +3,7 @@ import type { PlayerData } from '../types';
 import { TRAINS } from '../data/trains';
 import type { Train } from '../data/trains';
 import { sound, voiceGuide } from '../utils/sound';
+import { withBase } from '../utils/assetUrl';
 
 interface ResultScreenProps {
   earnedMiles: number;
@@ -178,7 +179,7 @@ export const ResultScreen: React.FC<ResultScreenProps> = ({
               }}
             >
               <img
-                src={gachaResult.imagePath}
+                src={withBase(gachaResult.imagePath)}
                 alt={gachaResult.name}
                 style={{
                   width: '100%',
