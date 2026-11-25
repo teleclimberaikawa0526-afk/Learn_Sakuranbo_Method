@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import type { PlayerData } from '../types';
 
 const STORAGE_KEY = 'sakuranbo_train_player_data';
+const PASSWORD_KEY = 'sakuranbo_train_settings_password';
+const DEFAULT_PASSWORD = '0000';
 
 const defaultData: PlayerData = {
   miles: 0,
@@ -10,6 +12,7 @@ const defaultData: PlayerData = {
 
 export const useGameData = () => {
   const [playerData, setPlayerData] = useState<PlayerData>(defaultData);
+  const [password, setPassword] = useState<string>(DEFAULT_PASSWORD);
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -24,6 +27,12 @@ export const useGameData = () => {
         console.error('Failed to parse save data', e);
       }
     }
+
+    const savedPassword = localStorage.getItem(PASSWORD_KEY);
+    if (savedPassword && savedPassword.length > 0) {
+      setPassword(savedPassword);
+    }
+
     setIsLoaded(true);
   }, []);
 
@@ -59,6 +68,19 @@ export const useGameData = () => {
     return false;
   };
 
+  const resetMiles = () => {
+    save((prev) => ({ ...prev, miles: 0 }));
+  };
+
+  const resetTrains = () => {
+    save((prev) => ({ ...prev, unlockedTrainIds: [] }));
+  };
+
+  const updatePassword = (newPassword: string) => {
+    setPassword(newPassword);
+    localStorage.setItem(PASSWORD_KEY, newPassword);
+  };
+
   const exportData = () => {
     return btoa(JSON.stringify(playerData));
   };
@@ -77,5 +99,17 @@ export const useGameData = () => {
     return false;
   };
 
-  return { playerData, addMiles, unlockTrain, spendMiles, isLoaded, exportData, importData };
+  return {
+    playerData,
+    password,
+    addMiles,
+    unlockTrain,
+    spendMiles,
+    resetMiles,
+    resetTrains,
+    updatePassword,
+    isLoaded,
+    exportData,
+    importData,
+  };
 };

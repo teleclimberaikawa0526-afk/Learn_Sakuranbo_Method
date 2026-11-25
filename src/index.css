@@ -225,17 +225,30 @@ body {
   display: inline-block;
 }
 
-.transfer-link {
+.title-footer-links {
   position: absolute;
   bottom: 10px;
+  left: 14px;
   right: 14px;
-  background: none;
-  border: none;
-  color: #64748b;
-  text-decoration: underline;
-  font-size: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-link-btn {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 5px 12px;
+  color: #475569;
+  font-weight: 700;
+  font-size: 0.84rem;
   cursor: pointer;
   font-family: inherit;
+}
+
+.footer-link-btn:active {
+  transform: scale(0.96);
 }
 
 .modal-overlay {
@@ -903,4 +916,204 @@ body {
   100% {
     transform: rotate(360deg) scale(1);
   }
+}
+
+/* Settings Screen */
+.settings-screen {
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-screen.unlocked {
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.settings-auth-card {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-align: center;
+}
+
+.settings-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 2px;
+}
+
+.settings-title {
+  font-size: 1.45rem;
+  color: #1e293b;
+  font-weight: 900;
+}
+
+.settings-desc {
+  font-size: 0.92rem;
+  color: #475569;
+  font-weight: 700;
+}
+
+.settings-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settings-pw-input {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 1.4rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 0.25em;
+  border-radius: 12px;
+  border: 2px solid #94a3b8;
+  background: #f8fafc;
+  font-family: inherit;
+}
+
+.settings-pw-input:focus,
+.settings-text-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: #ffffff;
+}
+
+.pin-pad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.pin-key {
+  padding: 10px 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  font-family: inherit;
+  border-radius: 12px;
+  border: 2px solid #cbd5e1;
+  border-bottom: 4px solid #94a3b8;
+  background: white;
+  color: #1e293b;
+  cursor: pointer;
+}
+
+.pin-key.sub {
+  font-size: 0.9rem;
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.pin-key:active {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+.settings-error-text {
+  color: #e11d48;
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.settings-success-banner {
+  width: 100%;
+  background: #dcfce7;
+  border: 2px solid #22c55e;
+  color: #166534;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 10px 14px;
+  border-radius: 12px;
+  text-align: center;
+  animation: popIn 0.25s ease-out;
+}
+
+.settings-sections {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 16px;
+}
+
+.settings-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settings-card-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.settings-card-sub {
+  font-size: 0.88rem;
+  color: #64748b;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.confirm-box {
+  background: #fff1f2;
+  border: 2px solid #fda4af;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.confirm-text {
+  font-size: 0.92rem;
+  font-weight: 800;
+  color: #9f1239;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.pw-change-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pw-field-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.settings-text-input {
+  flex: 1;
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 10px;
+  border: 2px solid #cbd5e1;
+  background: white;
+  font-family: inherit;
+}
+
+.pw-eye-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 2px solid #cbd5e1;
+  background: #f8fafc;
+  font-size: 1.1rem;
+  cursor: pointer;
+  flex-shrink: 0;
 }

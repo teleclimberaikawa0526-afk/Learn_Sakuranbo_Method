@@ -5,11 +5,23 @@ import { TitleScreen } from './components/TitleScreen';
 import { GameScreen } from './components/GameScreen';
 import { ResultScreen } from './components/ResultScreen';
 import { ZukanScreen } from './components/ZukanScreen';
+import { SettingsScreen } from './components/SettingsScreen';
 import './index.css';
 
 function App() {
-  const { playerData, addMiles, unlockTrain, spendMiles, isLoaded, exportData, importData } =
-    useGameData();
+  const {
+    playerData,
+    password,
+    addMiles,
+    unlockTrain,
+    spendMiles,
+    resetMiles,
+    resetTrains,
+    updatePassword,
+    isLoaded,
+    exportData,
+    importData,
+  } = useGameData();
   const [gameState, setGameState] = useState<GameState>('title');
   const [course, setCourse] = useState<CourseType>('addition');
   const [lastEarnedMiles, setLastEarnedMiles] = useState(0);
@@ -39,6 +51,7 @@ function App() {
           onStartGame={handleStartGame}
           onOpenZukan={() => setGameState('encyclopedia')}
           onOpenGacha={() => setGameState('gacha')}
+          onOpenSettings={() => setGameState('settings')}
           exportData={exportData}
           importData={importData}
         />
@@ -79,6 +92,17 @@ function App() {
 
       {gameState === 'encyclopedia' && (
         <ZukanScreen playerData={playerData} onBack={() => setGameState('title')} />
+      )}
+
+      {gameState === 'settings' && (
+        <SettingsScreen
+          playerData={playerData}
+          currentPassword={password}
+          onResetMiles={resetMiles}
+          onResetTrains={resetTrains}
+          onUpdatePassword={updatePassword}
+          onBack={() => setGameState('title')}
+        />
       )}
     </>
   );

@@ -1,4 +1,4 @@
-export type GameState = 'title' | 'playing' | 'result' | 'encyclopedia' | 'gacha';
+export type GameState = 'title' | 'playing' | 'result' | 'encyclopedia' | 'gacha' | 'settings';
 
 export type CourseType = 'addition' | 'subtraction' | 'mixed';
 

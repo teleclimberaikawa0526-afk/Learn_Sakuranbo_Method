@@ -9,6 +9,7 @@ interface TitleScreenProps {
   onStartGame: (course: CourseType) => void;
   onOpenZukan: () => void;
   onOpenGacha: () => void;
+  onOpenSettings: () => void;
   exportData?: () => string;
   importData?: (dataStr: string) => boolean;
 }
@@ -19,6 +20,7 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({
   onStartGame,
   onOpenZukan,
   onOpenGacha,
+  onOpenSettings,
   exportData,
   importData,
 }) => {
@@ -138,9 +140,26 @@ export const TitleScreen: React.FC<TitleScreenProps> = ({
         </button>
       </div>
 
-      <button className="transfer-link" onClick={() => setShowTransfer(true)}>
-        データの引き継ぎ
-      </button>
+      <div className="title-footer-links">
+        <button
+          className="footer-link-btn"
+          onClick={() => {
+            sound.playClick();
+            onOpenSettings();
+          }}
+        >
+          ⚙️ せってい
+        </button>
+        <button
+          className="footer-link-btn"
+          onClick={() => {
+            sound.playClick();
+            setShowTransfer(true);
+          }}
+        >
+          🔄 データの引き継ぎ
+        </button>
+      </div>
 
       {showTransfer && (
         <div className="modal-overlay">
