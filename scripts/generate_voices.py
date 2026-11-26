@@ -82,9 +82,10 @@ def collect_phrases() -> list[str]:
                 phrases.add(f"やったー！こたえは {r(ans)}！だいせいかい！")
                 phrases.add(f"おしい！のこった {r(inter)} こ と、{r(cr)} こ を ぜんぶ かぞえてみよう。")
 
-    # 3. Result screen phrases (earnedMiles 0..30)
+    # 3. Result screen & navigation confirmation phrases
     for miles in range(0, 31):
         phrases.add(f"ぜんぶ クリアしたよ！{miles}マイル ゲット！すごいね！")
+    phrases.add("こんかいの マイルは うしなわれますが、それで いいですか？")
 
     # 4. Gacha train unlock & Zukan description phrases from trains.ts
     if os.path.exists(TRAINS_TS):

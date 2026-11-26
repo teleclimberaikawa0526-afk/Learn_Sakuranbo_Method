@@ -53,3 +53,14 @@ export interface SakuranboQuestion {
   /** 3つのステップのガイドと正解 */
   steps: [StepGuide, StepGuide, StepGuide];
 }
+
+export interface ActiveSession {
+  course: CourseType;
+  questions: SakuranboQuestion[];
+  qIndex: number;
+  step: StepIndex;
+  earnedMiles: number;
+  stepHadMistake: boolean;
+  showBlocks: boolean;
+  isCompletedPendingCommit?: boolean;
+}

@@ -1117,3 +1117,152 @@ body {
   cursor: pointer;
   flex-shrink: 0;
 }
+
+/* Session Miles Badge & Exit Confirmation Modal */
+.miles-dual-group {
+  display: flex;
+  align-items: stretch;
+  gap: 5px;
+}
+
+.current-miles-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  border: 2px solid #cbd5e1;
+  border-radius: 11px;
+  padding: 2px 7px;
+  line-height: 1.15;
+}
+
+.current-miles-val {
+  font-size: 0.98rem;
+  font-weight: 900;
+  color: #334155;
+  white-space: nowrap;
+}
+
+.session-miles-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fef3c7;
+  border: 2px solid #fbbf24;
+  border-radius: 11px;
+  padding: 2px 8px;
+  line-height: 1.15;
+}
+
+.session-miles-label {
+  font-size: 0.6rem;
+  font-weight: 900;
+  color: #78350f;
+  white-space: nowrap;
+}
+
+.current-miles-pill .session-miles-label {
+  color: #64748b;
+}
+
+.session-miles-val {
+  font-size: 0.98rem;
+  font-weight: 900;
+  color: #d97706;
+  white-space: nowrap;
+}
+
+.exit-confirm-card {
+  text-align: center;
+  align-items: center;
+  gap: 14px;
+  border: 3px solid #fda4af;
+}
+
+.exit-confirm-icon {
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+.exit-confirm-message {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #1e293b;
+  line-height: 1.45;
+}
+
+.exit-confirm-miles {
+  background: #fef3c7;
+  border: 2px solid #fbbf24;
+  border-radius: 999px;
+  padding: 5px 16px;
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #92400e;
+}
+
+.exit-confirm-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Block Flight Animation (Step 1 -> Step 2 Make-Ten Move) */
+.block-visualizer,
+.ten-frame-box,
+.ten-frame-grid {
+  overflow: visible;
+}
+
+.block-fly-in {
+  position: absolute;
+  inset: -2px;
+  width: auto;
+  height: auto;
+  z-index: 25;
+  pointer-events: none;
+  animation-name: flyToTenSlot;
+  animation-timing-function: cubic-bezier(0.22, 0.8, 0.26, 1);
+  animation-fill-mode: both;
+}
+
+@keyframes flyToTenSlot {
+  0% {
+    transform: translate(var(--from-x, 0px), var(--from-y, 0px)) scale(1);
+    box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+  }
+  48% {
+    transform: translate(
+        calc(var(--from-x, 0px) * 0.45),
+        calc(var(--from-y, 0px) * 0.45 - 16px)
+      )
+      scale(1.22);
+    box-shadow: 0 10px 18px rgba(37, 99, 235, 0.4);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.15);
+  }
+}
+
+.dot-departing {
+  background: linear-gradient(135deg, #60a5fa, #2563eb);
+  border: 2px dashed transparent;
+  animation: departToGhost 0.08s linear forwards;
+}
+
+@keyframes departToGhost {
+  0% {
+    background: linear-gradient(135deg, #60a5fa, #2563eb);
+    border-color: transparent;
+    opacity: 1;
+  }
+  100% {
+    background: transparent;
+    border: 2px dashed #cbd5e1;
+    opacity: 0.45;
+  }
+}

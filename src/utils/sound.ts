@@ -20,8 +20,12 @@ class SoundManager {
 
   public unlock() {
     this.init();
-    if (this.audioContext && this.audioContext.state === 'suspended') {
-      this.audioContext.resume();
+    if (
+      this.audioContext &&
+      (this.audioContext.state === 'suspended' ||
+        (this.audioContext.state as string) === 'interrupted')
+    ) {
+      this.audioContext.resume().catch(() => {});
     }
   }
 

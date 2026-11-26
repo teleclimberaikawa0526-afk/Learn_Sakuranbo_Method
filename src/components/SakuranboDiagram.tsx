@@ -4,6 +4,7 @@ import type { SakuranboQuestion, StepIndex } from '../types';
 interface SakuranboDiagramProps {
   question: SakuranboQuestion;
   step: StepIndex;
+  isStepSolved: boolean;
   isQuestionDone: boolean;
   shakeSlot: boolean;
 }
@@ -11,14 +12,15 @@ interface SakuranboDiagramProps {
 export const SakuranboDiagram: React.FC<SakuranboDiagramProps> = ({
   question,
   step,
+  isStepSolved,
   isQuestionDone,
   shakeSlot,
 }) => {
   const { type, a, b, answer, cherryLeft, cherryRight, intermediateResult } = question;
 
   if (type === 'addition') {
-    const showLeft = step >= 1 || isQuestionDone;
-    const showRight = step >= 2 || isQuestionDone;
+    const showLeft = (step === 0 && isStepSolved) || step >= 1 || isQuestionDone;
+    const showRight = (step === 1 && isStepSolved) || step >= 2 || isQuestionDone;
     const showAnswer = isQuestionDone;
 
     return (
@@ -58,14 +60,22 @@ export const SakuranboDiagram: React.FC<SakuranboDiagramProps> = ({
             <div className="cherry-fruits">
               <div
                 className={`cherry-circle ${
-                  step === 0 && !isQuestionDone ? 'slot-active' : showLeft ? 'slot-filled' : ''
+                  step === 0 && !isStepSolved && !isQuestionDone
+                    ? 'slot-active'
+                    : showLeft
+                    ? 'slot-filled'
+                    : ''
                 } ${shakeSlot && step === 0 ? 'shake' : ''}`}
               >
                 {showLeft ? cherryLeft : '?'}
               </div>
               <div
                 className={`cherry-circle ${
-                  step === 1 && !isQuestionDone ? 'slot-active' : showRight ? 'slot-filled' : ''
+                  step === 1 && !isStepSolved && !isQuestionDone
+                    ? 'slot-active'
+                    : showRight
+                    ? 'slot-filled'
+                    : ''
                 } ${shakeSlot && step === 1 ? 'shake' : ''}`}
               >
                 {showRight ? cherryRight : '?'}
@@ -107,8 +117,8 @@ export const SakuranboDiagram: React.FC<SakuranboDiagramProps> = ({
   }
 
   // Subtraction (減加法: a - b)
-  const showRight = step >= 1 || isQuestionDone;
-  const showIntermediate = step >= 2 || isQuestionDone;
+  const showRight = (step === 0 && isStepSolved) || step >= 1 || isQuestionDone;
+  const showIntermediate = (step === 1 && isStepSolved) || step >= 2 || isQuestionDone;
   const showAnswer = isQuestionDone;
 
   return (
@@ -142,7 +152,11 @@ export const SakuranboDiagram: React.FC<SakuranboDiagramProps> = ({
             <div className="cherry-circle slot-ten">10</div>
             <div
               className={`cherry-circle ${
-                step === 0 && !isQuestionDone ? 'slot-active' : showRight ? 'slot-filled' : ''
+                step === 0 && !isStepSolved && !isQuestionDone
+                  ? 'slot-active'
+                  : showRight
+                  ? 'slot-filled'
+                  : ''
               } ${shakeSlot && step === 0 ? 'shake' : ''}`}
             >
               {showRight ? cherryRight : '?'}
@@ -171,11 +185,11 @@ export const SakuranboDiagram: React.FC<SakuranboDiagramProps> = ({
       <div className="helper-formula-bar">
         {showRight ? (
           <div className="sub-helper-area">
-            <div className={`sub-step-row ${step === 1 && !isQuestionDone ? 'highlight-row' : ''}`}>
+            <div className={`sub-step-row ${step === 1 && !isStepSolved && !isQuestionDone ? 'highlight-row' : ''}`}>
               <span>① 10−{b}＝</span>
               <span
                 className={`mini-slot ${
-                  step === 1 && !isQuestionDone
+                  step === 1 && !isStepSolved && !isQuestionDone
                     ? 'slot-active'
                     : showIntermediate
                     ? 'slot-filled'
